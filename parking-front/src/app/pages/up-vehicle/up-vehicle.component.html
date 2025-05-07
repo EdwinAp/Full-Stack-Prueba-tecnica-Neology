@@ -1,0 +1,18 @@
+<mat-form-field>
+    <mat-label>Input</mat-label>
+    <input [(ngModel)]="plate" matInput>
+</mat-form-field>
+<mat-form-field>
+    <mat-label>Select</mat-label>
+    <mat-select [(ngModel)]="catVehicle">
+        <mat-option *ngFor="let cat of listCatVehicles" [value]="cat.id">
+            {{ cat.name }}
+        </mat-option>
+    </mat-select>
+</mat-form-field>
+<div class="example-button-container">
+    <button (click)="saveVehicle()" mat-fab extended>
+        <mat-icon>favorite</mat-icon>
+        Registrar Vehiculo
+    </button>
+</div>

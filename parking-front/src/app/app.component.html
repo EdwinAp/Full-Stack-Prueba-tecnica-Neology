@@ -1,0 +1,15 @@
+<mat-toolbar>
+    <button (click)="navegarAListado()" outerLinkActive="active" mat-button >Listado de Vehiculos</button>
+
+    <button (click)="navegarAEntradaSalida()" mat-button >Registrar Entrada/Salida</button>
+
+    <button (click)="navegarAAltaVehicle()" mat-button >Dar de Alta Vehiculo</button>
+
+    <button  mat-button >Iniciar nuevo Mes</button>
+
+    <button (click)="navegarADetailVehicle()" mat-button >Detalle por Vehiculo</button>
+
+    <button (click)="navegarAReport()"  mat-button >Pagina de Reporte</button>
+</mat-toolbar>
+
+<router-outlet />
