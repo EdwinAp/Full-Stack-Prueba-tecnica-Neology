@@ -1,5 +1,31 @@
-:host {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
+.contenedor-centrado {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+}
+
+.card-content {
+  padding: 30px;
+}
+
+.father-content {
+  height: 100%;
+}
+
+.example-form {
+  display: block;
+  width: 100%;
+}
+
+.example-full-width {
+  display: block;
+  width: 100%;
+}
+
+.message-error {
+  margin-top: -10px;
+  color: red;
+}

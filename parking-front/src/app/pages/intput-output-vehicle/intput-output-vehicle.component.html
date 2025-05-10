@@ -1,18 +1,42 @@
-<mat-form-field>
-    <mat-label>Input</mat-label>
-    <input [(ngModel)]="plate" matInput>
-</mat-form-field>
-<mat-form-field>
-    <mat-label>Select</mat-label>
-    <mat-select [(ngModel)]="optionIO">
-        <mat-option *ngFor="let cat of inputOutput" [value]="cat.key">
-            {{ cat.name }}
-        </mat-option>
-    </mat-select>
-</mat-form-field>
-<div class="example-button-container">
-    <button (click)="registerInputOutput()" mat-fab extended>
-        <mat-icon>favorite</mat-icon>
-        Registrar Vehiculo
-    </button>
+
+<div class="contenedor-centrado">
+    <mat-card class="card-content" >
+
+        <mat-card-header >
+            <mat-card-title>Registrar la entrada y salida de Vehiculos</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content >
+
+            <div class="example-button-container">
+                <mat-form-field >
+                    <mat-label>Ingresa la placa</mat-label>
+                    <input [(ngModel)]="plate" matInput>
+                </mat-form-field>
+                <p class="message-error" *ngIf="validatePlate"> {{ validatePlate }}</p>
+            </div>
+            
+            <div class="example-button-container">
+                <mat-form-field >
+                    <mat-label>Seleccionar Entrada/Salida</mat-label>
+                    <mat-select [(ngModel)]="optionIO">
+                        <mat-option *ngFor="let cat of inputOutput" [value]="cat.key">
+                            {{ cat.name }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field >
+                <p class="message-error" *ngIf="validateOption"> {{ validateOption }}</p>
+            </div>
+
+            <div class="example-button-container">
+                <button (click)="registerInputOutput()" mat-fab extended>
+                    <mat-icon>favorite</mat-icon>
+                    Registrar
+                </button>
+            </div>
+
+        </mat-card-content>
+
+    </mat-card>
+
 </div>

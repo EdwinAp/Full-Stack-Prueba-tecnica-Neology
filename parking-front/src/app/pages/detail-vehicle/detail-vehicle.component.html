@@ -1,1 +1,46 @@
-<p>detail-vehicle works!</p>
+<div class="content-general">
+
+    <mat-spinner *ngIf="isLoading" ></mat-spinner>
+
+    <mat-tab-group *ngIf="!isLoading">
+        
+        <mat-tab label="Datos Generales"> 
+            <h2>Informacion del Vehiculo: {{ plate }}</h2>
+                <p>Tipo de Vehiculo: <strong>{{vehicleData.name}}</strong></p>
+                <p>Descripcion de tipo de Vehiculo: <strong>{{vehicleData.description}}</strong></p>
+                <p>Costo por minuto segun tu perfil: <strong>{{vehicleData.cost}}</strong></p>
+                <p>Minutos acomulados: <strong>{{vehicleData.minutes ? vehicleData.minutes : 0}}</strong></p>
+                <p>Total acomulado por minutos: <strong>{{vehicleData.totalCost}}</strong></p>
+        </mat-tab>
+        
+        <mat-tab label="Entradas y salidas"> 
+
+            <mat-table [dataSource]="staysVehicle" class="mat-elevation-z8">
+                <!-- Position Column -->
+                <ng-container matColumnDef="plate">
+                    <mat-header-cell *matHeaderCellDef> Placa del Vehiculo </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{ plate }} </mat-cell>
+                </ng-container>
+
+                <!-- Position Column -->
+                <ng-container matColumnDef="inputDate">
+                    <mat-header-cell *matHeaderCellDef> Fecha de Ingreso </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.inputDate | date:'full' }} </mat-cell>
+                </ng-container>
+              
+                <!-- Name Column -->
+                <ng-container matColumnDef="outputDate">
+                    <mat-header-cell *matHeaderCellDef> Fecha de Salida </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.outputDate | date:'full' }} </mat-cell>
+                </ng-container>
+              
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+
+        </mat-tab>
+
+    </mat-tab-group>
+
+
+</div>

@@ -3,6 +3,9 @@ import { Injectable } from '@angular/core';
 import { UpVehicle } from '../models/up-vehicle';
 import { Observable } from 'rxjs';
 import { CatVehicles } from '../models/cat-vehicles';
+import { PageResponse } from '../models/page-response';
+import { VehicleData } from '../models/vehicle-data';
+import { StaysVehicle } from '../models/stays-vehicle';
 
 
 @Injectable({
@@ -15,6 +18,22 @@ export class VehiclesService  {
   constructor(
     private http: HttpClient
   ) { }
+
+  deleteStay(): Observable<boolean> {
+    return this.http.delete<boolean>(`${this.urlBase}/stays/current`);
+  }
+
+  obtainVehicleInformation(plate: string): Observable<VehicleData> {
+    return this.http.get<VehicleData>(`${this.urlBase}/vehicle/${plate}`);
+  }
+
+  obtainStayVehicle(plate: string) : Observable<StaysVehicle[]> {
+    return this.http.get<StaysVehicle[]>(`${this.urlBase}/stays/${plate}`);
+  }
+
+  pageableVehicles(pageRquest: PageResponse<any>) : Observable<PageResponse<VehicleData>> {
+    return this.http.post<PageResponse<VehicleData>>(`${this.urlBase}/vehicle/pageable`, pageRquest);
+  }
 
   upVehicle(upVehicle: UpVehicle) : Observable<UpVehicle> {
     return this.http.post<UpVehicle>(`${this.urlBase}/vehicle/up`, upVehicle);

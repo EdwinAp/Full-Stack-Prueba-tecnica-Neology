@@ -1,5 +1,17 @@
-:host {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
+.contenedor-centrado {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+}
+
+.card-content {
+  padding: 30px;
+}
+
+.message-error {
+  margin-top: -10px;
+  color: red;
+}

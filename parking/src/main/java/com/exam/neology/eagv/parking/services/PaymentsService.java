@@ -57,9 +57,11 @@ public class PaymentsService {
         Map<String, Long> totalMinutes = new HashMap<>();
 
         result.parallelStream().forEach(stayVehicle -> {
-            Long resultMinutes = ChronoUnit.MINUTES.between(stayVehicle.getInputDate(), stayVehicle.getOutputDate());
-            totalMinutes.compute(stayVehicle.getPlate().getPlate(), (plate, minutes) ->
-                    minutes == null ? resultMinutes : minutes + resultMinutes);
+            if (Objects.nonNull(stayVehicle.getInputDate()) && Objects.nonNull(stayVehicle.getOutputDate())) {
+                Long resultMinutes = ChronoUnit.MINUTES.between(stayVehicle.getInputDate(), stayVehicle.getOutputDate());
+                totalMinutes.compute(stayVehicle.getPlate().getPlate(), (plate, minutes) ->
+                        minutes == null ? resultMinutes : minutes + resultMinutes);
+            }
         });
 
         List<PlateMinutesCostCsv> plateMinutesCostCsvs = new ArrayList<>();
@@ -83,6 +85,8 @@ public class PaymentsService {
     }
 
     public static String multiplyFormater(BigDecimal bigDecimal, Long longValue) {
+        if (Objects.isNull(longValue)) return "0.00";
+
         BigDecimal longBigDecimal = new BigDecimal(longValue);
 
         BigDecimal resultado = bigDecimal.multiply(longBigDecimal);

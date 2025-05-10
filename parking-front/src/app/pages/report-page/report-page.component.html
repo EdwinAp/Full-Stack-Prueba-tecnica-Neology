@@ -1,1 +1,40 @@
-<p>report-page works!</p>
+<div class="contenedor-centrado">
+    <mat-card class="card-content">
+
+        <mat-card-header>
+            <mat-card-title>Generar reporte del mes actual (por tipo de vehiculo)</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+
+            <div class="example-button-container">
+                <mat-form-field>
+                    <mat-label>Ingresa el nombre del archivo</mat-label>
+                    <input [(ngModel)]="nameFile" matInput>
+                </mat-form-field>
+                <p class="message-error" *ngIf="validateName"> {{ validateName }}</p>
+            </div>
+
+            <div class="example-button-container">
+                <mat-form-field>
+                    <mat-label>Select</mat-label>
+                    <mat-select [(ngModel)]="catVehicle">
+                        <mat-option *ngFor="let cat of listCatVehicles" [value]="cat.id">
+                            {{ cat.name }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <p class="message-error" *ngIf="validateOption"> {{ validateOption }}</p>
+            </div>
+
+            <div class="example-button-container">
+                <button (click)="generateReport()" mat-fab extended>
+                    <mat-icon>description</mat-icon>
+                    Generar Reporte
+                </button>
+            </div>
+
+        </mat-card-content>
+    </mat-card>
+
+</div>

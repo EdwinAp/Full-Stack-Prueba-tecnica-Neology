@@ -1,0 +1,8 @@
+<h2 mat-dialog-title>Advertencia</h2>
+<mat-dialog-content>
+  ¿Estas seguro que deseas eliminar entras/salidas del mes actual?
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button (click)="cerrarDialogo(false)" mat-button mat-dialog-close>No</button>
+  <button (click)="cerrarDialogo(true)" mat-button mat-dialog-close cdkFocusInitial>Ok</button>
+</mat-dialog-actions>
